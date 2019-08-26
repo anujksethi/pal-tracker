@@ -3,6 +3,6 @@ applications:
 - name: pal-tracker
   path: src/PalTracker/bin/Release/netcoreapp2.1/publish/
   routes:
-  - route: dellpivotallab-review.io
+  - route: dellpivotallab-prod.cfapps.io
   env:
     WELCOME_MESSAGE: Hello from Prod Cloud Foundry 
