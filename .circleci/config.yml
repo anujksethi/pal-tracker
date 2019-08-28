@@ -7,7 +7,7 @@ jobs:
           DEBIAN_FRONTEND: "noninteractive"
     steps:
       - checkout
-        - run:
+      - run:
             name: Install MySQL
             command: |
               apt-get update
@@ -17,12 +17,12 @@ jobs:
               # Wait for MySQL to start
               sleep 5
 
-        - run:
+      - run:
             name: Install flyway
             command: |
               curl https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/5.1.1/flyway-commandline-5.1.1-linux-x64.tar.gz | tar xvz
 
-        - run:
+      - run:
             name: Create test database and migrate
             command: |
               mysql -uroot < databases/tracker/create_databases.sql
