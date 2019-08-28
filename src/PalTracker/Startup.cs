@@ -13,7 +13,7 @@ using Microsoft.Extensions.Options;
 using Steeltoe.CloudFoundry.Connector.MySql.EFCore;
 using Steeltoe.Management.CloudFoundry;
 using Steeltoe.Common.HealthChecks;
-
+using Steeltoe.Management.Endpoint.Info;
 namespace PalTracker
 {
     public class Startup
@@ -36,6 +36,8 @@ namespace PalTracker
             services.AddDbContext<TimeEntryContext>(options => options.UseMySql(Configuration)); 
             services.AddCloudFoundryActuators(Configuration);
             services.AddScoped<IHealthContributor, TimeEntryHealthContributor>();
+            services.AddSingleton<IOperationCounter<TimeEntry>, OperationCounter<TimeEntry>>();
+             services.AddSingleton<IInfoContributor, TimeEntryInfoContributor>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
